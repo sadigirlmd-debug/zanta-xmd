@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZANTA-XMD</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      position: relative;
+    }
+
+    body::before, body::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.2;
+      animation: floatAnimation 10s ease-in-out infinite alternate;
+    }
+
+    body::before {
+      width: 300px;
+      height: 300px;
+      background: #ff6a00;
+      top: 20%;
+      left: 15%;
+      animation-delay: 0s;
+    }
+
+    body::after {
+      width: 400px;
+      height: 400px;
+      background: #00c6ff;
+      top: 65%;
+      left: 65%;
+      animation-delay: 5s;
+    }
+
+    @keyframes floatAnimation {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.2;
+      }
+      100% {
+        transform: translateY(-20px) translateX(20px);
+        opacity: 0.3;
+      }
+    }
+
+    .container {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(15px);
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      animation: slideUpFade 0.8s ease forwards;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      animation: floatScale 6s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatScale {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        transform: translateY(-10px) scale(1.02);
+      }
+    }
+
+    h2 {
+      margin-bottom: 30px;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #ddd;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 14px 15px;
+      margin-bottom: 25px;
+      border: none;
+      border-radius: 12px;
+      outline: none;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #eee;
+      box-shadow: inset 0 0 6px rgba(255,255,255,0.1);
+      transition: box-shadow 0.3s ease, background 0.3s ease;
+      position: relative;
+    }
+
+    input[type="text"]::placeholder {
+      color: #bbb;
+      transition: opacity 0.4s ease;
+      animation: placeholderPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes placeholderPulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    input[type="text"]:focus {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 10px 3px #ff6a00;
+      color: #fff;
+    }
+
+    button {
+      position: relative;
+      overflow: hidden;
+      padding: 14px 30px;
+      background: linear-gradient(45deg, #ff6a00, #ee0979);
+      border: none;
+      border-radius: 12px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 20px rgba(238, 9, 121, 0.6);
+      transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
+      user-select: none;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #ee0979, #ff6a00);
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(255, 106, 0, 0.8);
+    }
+
+    /* ripple effect */
+    button .ripple {
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      animation: rippleEffect 600ms linear;
+      background-color: rgba(255, 255, 255, 0.7);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    #status {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #ff6a00;
+      font-weight: 600;
+      min-height: 20px;
+      animation: fadeInStatus 0.5s ease forwards;
+      text-shadow: 0 0 8px #ff6a00;
+      animation: pulsate 2.5s ease-in-out infinite;
+    }
+
+    @keyframes fadeInStatus {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes pulsate {
+      0%, 100% {
+        text-shadow: 0 0 8px #ff6a00;
+      }
+      50% {
+        text-shadow: 0 0 18px #ff6a00;
+      }
+    }
+
+    @keyframes slideUpFade {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>ZANTA-XMD FREE DEPLOY</h2>
+    <form id="deploy-form">
+      <label>Your Name:</label>
+      <input type="text" id="app-name" placeholder="Enter your name" required />
+
+      <label>Session ID:</label>
+      <input type="text" id="session-id" placeholder="Enter session ID" required />
+
+      <button type="submit">🚀 Deploy Bot</button>
+    </form>
+    <p id="status"></p>
+  </div>
+
+  <script>
+    // ripple effect on button click
+    const button = document.querySelector('button');
+    button.addEventListener('click', function (e) {
+      const circle = document.createElement('span');
+      circle.classList.add('ripple');
+      const rect = button.getBoundingClientRect();
+      circle.style.width = circle.style.height = Math.max(rect.width, rect.height) + 'px';
+      circle.style.left = e.clientX - rect.left - (circle.offsetWidth / 2) + 'px';
+      circle.style.top = e.clientY - rect.top - (circle.offsetHeight / 2) + 'px';
+      button.appendChild(circle);
+      setTimeout(() => circle.remove(), 600);
+    });
+
+    document.getElementById("deploy-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const appName = document.getElementById("app-name").value.trim();
+      const sessionId = document.getElementById("session-id").value.trim();
+
+      const statusEl = document.getElementById("status");
+      statusEl.innerText = "Deploying... 🔄";
+
+      try {
+        const res = await fetch("/deploy", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ appName, sessionId })
+        });
+
+        const data = await res.json();
+        statusEl.innerText = data.message;
+      } catch (err) {
+        statusEl.innerText = "Deployment failed. Please try again.";
+      }
+    });
+  </script>
+</body>
+  </html>
