@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 app.use(express.static("public"));
 
-const HEROKU_API_KEY = "HRKU-AA7FZmyG3-kmESClvTEsErFxcuWA7TRHqjXQ8u1F963w_____wyUOJUSCD4b";
+const HEROKU_API_KEY = "HRKU-AAimXNg1PDa6r2cVTuLKI9mLefNh0QS4WdV3s3W3j28g_____wi2t9Sz-qVk";
 
 app.post("/deploy", async (req, res) => {
   const { appName, sessionId } = req.body;
@@ -28,7 +28,7 @@ app.post("/deploy", async (req, res) => {
       {
         app: { name: appName },
         source_blob: {
-          url: "https://github.com/sadigirlmd-debug/v.bot"
+          url: "https://github.com/zanta-xmd-repo1/anepanco/tarball/main"
         },
         overrides: {
           env: {
